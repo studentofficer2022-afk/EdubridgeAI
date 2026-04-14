@@ -1,0 +1,5 @@
+{
+  "name": "EduBridge AI",
+  "description": "An intelligent AI-powered education platform for students and teachers to manage study materials, generate quizzes, and interact with an AI tutor.",
+  "requestFramePermissions": ["geolocation"]
+}

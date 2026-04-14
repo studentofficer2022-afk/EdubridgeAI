@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "User profile and credentials",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "teacher", "admin"] }
+      },
+      "required": ["fullName", "username", "password", "role"]
+    },
+    "Notice": {
+      "title": "Notice",
+      "description": "Department announcements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "text": { "type": "string" },
+        "priority": { "type": "string", "enum": ["High", "Medium", "Normal"] },
+        "date": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["title", "text", "priority", "date", "active"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Real-time chat messages between members",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderRole": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "fileUrl": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileType": { "type": "string" },
+        "fileSize": { "type": "number" }
+      },
+      "required": ["senderId", "senderName", "senderRole", "content", "timestamp"]
+    },
+    "StudyMaterial": {
+      "title": "StudyMaterial",
+      "description": "Uploaded study resources",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string", "enum": ["qual", "f1", "f2"] },
+        "uploadDate": { "type": "string" }
+      },
+      "required": ["name", "category", "uploadDate"]
+    },
+    "Photo": {
+      "title": "Photo",
+      "description": "Department activity photos",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "url": { "type": "string" },
+        "caption": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["url", "caption", "date"]
+    }
+  },
+  "firestore": {
+    "/users": {
+      "schema": "UserAccount",
+      "description": "Collection of all user accounts"
+    },
+    "/notices": {
+      "schema": "Notice",
+      "description": "Collection of department notices"
+    },
+    "/messages": {
+      "schema": "ChatMessage",
+      "description": "Real-time chat messages"
+    },
+    "/materials": {
+      "schema": "StudyMaterial",
+      "description": "Collection of study materials"
+    },
+    "/photos": {
+      "schema": "Photo",
+      "description": "Collection of department photos"
+    }
+  }
+}
